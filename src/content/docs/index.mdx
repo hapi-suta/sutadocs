@@ -1,0 +1,48 @@
+---
+title: SUTA Labs Docs
+description: Step-by-step database labs, tested on real servers and documented for beginners.
+template: splash
+hero:
+  tagline: Build it. Use it. Survive it. Every step tested on a real server.
+---
+
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+
+{/* Base-aware so the links work both at the site root (custom domain) and under
+    a GitHub Pages project subpath like /sutadocs/. */}
+<LinkButton href={`${import.meta.env.BASE_URL}postgres/module01-history/readme/`} icon="right-arrow">
+  Start with PostgreSQL
+</LinkButton>
+<LinkButton href="https://github.com/hapi-suta/stepup-labs" variant="minimal" icon="external">
+  View the labs on GitHub
+</LinkButton>
+
+## How these labs work
+
+Every module follows the same rhythm. Work top to bottom - the left sidebar is
+your map.
+
+<CardGrid stagger>
+  <Card title="Concepts" icon="open-book">
+    The "why" behind the commands. Read these first if a topic is new to you.
+  </Card>
+  <Card title="Build" icon="setting">
+    Stand it up from scratch, one step at a time, with the expected output shown
+    so you can confirm each command worked.
+  </Card>
+  <Card title="Use" icon="pencil">
+    Hands-on exercises that reinforce what you built.
+  </Card>
+  <Card title="Survive" icon="warning">
+    Chaos scenarios - something breaks, you diagnose and recover. This is how real
+    DBA work feels.
+  </Card>
+</CardGrid>
+
+## Before you start
+
+- Each command says **which server** and **which user** to run it as. Read that
+  line before you type.
+- When you see `Expected output (yours will differ):`, compare your result to it
+  before moving on.
+- Steps are deliberately small. Don't skip or chain them.

@@ -1,0 +1,3 @@
+[submodule "vendor/stepup-labs"]
+	path = vendor/stepup-labs
+	url = https://github.com/hapi-suta/stepup-labs

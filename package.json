@@ -1,0 +1,23 @@
+{
+  "name": "sutadocs",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "sync": "tsx scripts/sync-content.ts",
+    "sync:watch": "tsx scripts/sync-content.ts --watch",
+    "dev": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.42.5",
+    "astro": "^7.3.5",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
