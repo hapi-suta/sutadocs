@@ -19,10 +19,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (with lab content submodule)
+      - name: Checkout (main repo only; submodule fetched below via deploy key)
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          persist-credentials: false
+      - name: Set up read-only deploy key for the private labs submodule
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_LABS_DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519,rsa github.com >> ~/.ssh/known_hosts 2>/dev/null
+      - name: Fetch lab content submodule (SSH via deploy key)
+        run: |
+          git config --global url."git@github.com:".insteadOf "https://github.com/"
+          git submodule sync --recursive
+          git submodule update --init --recursive --depth 1
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
